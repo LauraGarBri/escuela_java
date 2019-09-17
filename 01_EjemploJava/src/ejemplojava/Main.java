@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejemplojava;
 
 /**
  *
- * @author Formacion
+ * @author Laura Garcia
  */
 public class Main {
 
@@ -15,7 +10,29 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        System.out.println("Hola mundo");
+        
+        Coche miCoche = new Coche("kia",true); //La instanciacion se hace con new
+        
+        miCoche.echarCarburante(30); //Empezamos con medio deposito
+        
+        System.out.println("Coche creado: " + miCoche.getMarca() + "\nNivel Depósito: "+
+                miCoche.getNivelDeposito() + " litros\n");
+        
+        Coche otroCoche = miCoche; //new Coche();
+        
+        
+        System.out.println("Coche creado: " + otroCoche.getMarca() + "\nCapacidad Depósito: "+
+                otroCoche.getNivelDeposito() + " litros\n");
+        
+        miCoche.vaciarDeposito();
+        
+        miCoche.setArrancado(true);
+        miCoche.echarCarburante(-2);
+        for(int i=0; i<3;i++){
+            miCoche.acelerar();
+            miCoche.mostrar();
+        }
     }
-    
 }
