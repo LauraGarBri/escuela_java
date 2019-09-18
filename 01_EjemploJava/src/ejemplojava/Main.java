@@ -13,7 +13,7 @@ public class Main {
         
         System.out.println("Hola mundo");
         
-        Coche miCoche = new Coche("kia",true); //La instanciacion se hace con new
+        Coche miCoche = new Coche("kia", TipoColor.AZUL,TipoCarburante.DIESEL); //La instanciacion se hace con new
         
         miCoche.echarCarburante(30); //Empezamos con medio deposito
         
@@ -35,5 +35,15 @@ public class Main {
             miCoche.acelerar();
             miCoche.mostrar();
         }
+        
+        
+        //----------------------
+        System.out.println("+++++++++++++++++++++++++");
+        
+        Coche coche2 = new Coche("kia", "AZUL","DIESEL");
+        
+        System.out.println(coche2.toString());
+        
+        
     }
 }
