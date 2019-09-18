@@ -20,6 +20,7 @@ public class Main {
         System.out.println("Coche creado: " + miCoche.getMarca() + "\nNivel Depósito: "+
                 miCoche.getNivelDeposito() + " litros\n");
         
+        
         Coche otroCoche = miCoche; //new Coche();
         
         
