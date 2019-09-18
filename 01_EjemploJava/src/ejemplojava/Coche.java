@@ -10,29 +10,26 @@ public class Coche { //heredan de Object
     //Propiedades
     private final byte numRuedas;
     private final String marca;
-    private final boolean esGasolina;
     private double nivelDeposito;
     private boolean arrancado;
     private TipoColor color;
-    private TipoCarburante carburante;
+    private final TipoCarburante carburante;
 
     
     //Constructor
-    public Coche(String marca, boolean esGasolina, TipoColor color, TipoCarburante carburante){
+    public Coche(String marca, TipoColor color, TipoCarburante carburante){
         this.numRuedas = 4;
         this.marca = marca;
-        this.esGasolina = esGasolina;
         this.color = color;
         this.carburante= carburante;
     }
     
     //Constructor
-    public Coche(String marca, boolean esGasolina, String color, String carburante){
+    public Coche(String marca, String color, String carburante){
         this.numRuedas = 4;
-        this.marca = marca;
-        this.esGasolina = esGasolina;       
+        this.marca = marca;       
         
-        switch(color){
+        /*switch(color){
             case "AZUL":
                 this.color = TipoColor.AZUL;
                 break;
@@ -40,8 +37,9 @@ public class Coche { //heredan de Object
                 this.color = TipoColor.BLANCO;
                 break;
                 
-        }
+        }*/
         
+        this.color = TipoColor.valueOf(color.toUpperCase());
         this.carburante = TipoCarburante.valueOf(carburante.toUpperCase());
         
     }
@@ -53,10 +51,6 @@ public class Coche { //heredan de Object
     
     public String getMarca() {
         return marca;
-    }
-
-    public boolean isEsGasolina() {
-        return esGasolina;
     }
     
     public double getNivelDeposito(){
@@ -104,6 +98,7 @@ public class Coche { //heredan de Object
     //Metodo para modificar el nivel de deposito en funcion de si aceleramos o no
     public void acelerar(){
         if(arrancado){
+            explosionCilindro();
             nivelDeposito -= 0.1;
         }
     }
@@ -127,4 +122,12 @@ public class Coche { //heredan de Object
         System.out.println(this.toString());
     }
     
+    
+    protected void explosionCilindro(){
+        System.out.println("Motor funcionando");
+    }
+    
+    protected void setNivDeposito(double nuevoNiv){
+        this.nivelDeposito = nuevoNiv;
+    }
 }

@@ -1,15 +1,26 @@
 package ejemplojava;
 
+
+import clasesjava.StringAux;
+
 /**
  *
  * @author Laura Garcia
  */
 public class Main {
 
+    public static void main(String[] args) {
+        //String texto = StringAux.quitarEspacios("   En un    lugar");
+        //System.out.println(texto);
+        //StringAux.contarPalabras("   en     un    lugar");
+        //StringAux.otraFormaQuitarEspacios("   ee     lugar  ");
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void mainCoches(String[] args) {
         
         System.out.println("Hola mundo");
         
@@ -38,12 +49,35 @@ public class Main {
         
         
         //----------------------
-        System.out.println("+++++++++++++++++++++++++");
+        System.out.println("\n+++++++++++++++++++++++++");
         
         Coche coche2 = new Coche("kia", "AZUL","DIESEL");
         
         System.out.println(coche2.toString());
         
+        //-----------------herencia---------------------
+        System.out.println("\n*************HERENCIA************");
+        CocheRally cocheRally = new CocheRally("Ford", "azul", "gasolina",9f);
         
+        System.out.println(cocheRally.toString());
+        cocheRally.echarCarburante(50);
+        cocheRally.setArrancado(true);
+        cocheRally.acelerar();
+        cocheRally.derrapar();
+        cocheRally.mostrar();
+        
+        //-----------------POLIMORFISMO------------
+        System.out.println("\n*******************POLIMORFISMO****************");
+        Coche supraNormal = cocheRally;//Conversion implicita
+        supraNormal.explosionCilindro();
+        //supraNormal.derrapar();
+        supraNormal.acelerar();
+        supraNormal.mostrar();
+        
+        CocheRally cr = (CocheRally) supraNormal; //Casting o conversion explicita
+        System.out.println("Rozamiento:" + cr.getRozamiento());
+                
+        //cr = (CocheRally)miCoche; --> No se puede hacer el casting
+        //System.out.println("Rozamiento: " +cr.getRozamiento());
     }
 }
