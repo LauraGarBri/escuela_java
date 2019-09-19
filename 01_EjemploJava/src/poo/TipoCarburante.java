@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejemplojava;
+package poo;
 
 /**
  *
  * @author Formacion
  */
-
-
-enum TipoColor {
+public enum TipoCarburante {
     
-    BLANCO, NEGRO, ROJO, VERDE, AZUL, PLATEADO   
-}
-enum TipoCarburante{
     
     GASOLINA, DIESEL, ELECTRICO
 }

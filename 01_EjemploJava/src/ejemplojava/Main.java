@@ -1,6 +1,10 @@
 package ejemplojava;
 
 
+import poo.CocheRally;
+import poo.TipoColor;
+import poo.Coche;
+import poo.TipoCarburante;
 import clasesjava.StringAux;
 
 /**
@@ -24,7 +28,7 @@ public class Main {
         
         System.out.println("Hola mundo");
         
-        Coche miCoche = new Coche("kia", TipoColor.AZUL,TipoCarburante.DIESEL); //La instanciacion se hace con new
+        Coche miCoche = new Coche("kia", TipoColor.AZUL,"443"); //La instanciacion se hace con new
         
         miCoche.echarCarburante(30); //Empezamos con medio deposito
         
@@ -51,13 +55,13 @@ public class Main {
         //----------------------
         System.out.println("\n+++++++++++++++++++++++++");
         
-        Coche coche2 = new Coche("kia", "AZUL","DIESEL");
+        Coche coche2 = new Coche("kia", TipoColor.AZUL,"wew");
         
         System.out.println(coche2.toString());
         
         //-----------------herencia---------------------
         System.out.println("\n*************HERENCIA************");
-        CocheRally cocheRally = new CocheRally("Ford", "azul", "gasolina",9f);
+        CocheRally cocheRally = new CocheRally("Ford", TipoColor.AZUL,"erer");
         
         System.out.println(cocheRally.toString());
         cocheRally.echarCarburante(50);
