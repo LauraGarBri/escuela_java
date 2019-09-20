@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.TreeMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import poo.Pelota;
@@ -106,7 +107,7 @@ public class TestColecciones {
         }
     }
     
-    @Test
+   // @Test
     public void maps(){
         //los hashmap no se pueden repetir, se sobreescriben ("machacan" el valor anterior)
         HashMap<String, Boolean> coloresCalidos = new HashMap<>();
@@ -135,4 +136,18 @@ public class TestColecciones {
         assertEquals(coloresCalidos.size(),5);
     }
     
+    @Test
+    public void cochesMaps(){
+        
+         TreeMap<String, Coche> coche = new TreeMap<>();
+         Coche coche1 = new Coche("Fiat", TipoColor.AZUL, "AAA1234");
+         coche.put(coche1.getMatricula(), coche1);
+         Coche coche2 = new Coche("Ford", TipoColor.BLANCO, "BBB1234");
+         coche.put(coche2.getMatricula(), coche2);
+         
+          for(Map.Entry<String, Coche> par: coche.entrySet()){
+              System.out.println(">>Clave: " + par.getKey());
+              System.out.println("++Valor: " + par.getValue());
+          }
+    }
 }
