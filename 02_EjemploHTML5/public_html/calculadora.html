@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <form name="miFormulario" id="miForm" method="get" action="">
+            Escribe una cantidad<br/><br/> 
+            <input type="number" id="sumandoUno" name="sumandoUno" /><br/><br/>
+            +<br/><br/>    
+            <input type="number" id="sumandoDos" name="sumandoDos" /><br/><br/>
+            <input type="submit" id="botonSuma" name="botonSuma" value="Calcular" onclick="sumar()"><br/><br/>
+            <input type="text" id="result" name="result"/>
+       </form>
+
+        <script>
+            var cantidad1 = document.getElementById("sumandoUno").value;
+            var cantidad2 = document.getElementById("sumandoDos").value;
+            var resultado = document.getElementById("result");
+            function sumar() {
+                resultado.value = parseInt(cantidad1) + parseInt(cantidad2);
+            }
+
+        </script>
+    </body>
+</html>

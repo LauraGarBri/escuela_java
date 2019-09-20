@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Comentarios-->
+<html>
+    <head>
+        <title>Ejemplos objetos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <script>
+            //Maneras de crear objetos
+            var valor1 = new Object();//Creamos objetos
+            var valor2 = {
+                "dni":"9832323-J",
+                "nombre":"Menagnito",
+                "edad": 45,
+                "nacimiento": new Date()
+            }; // Nomenclatura json
+            
+            var persona = new Object();
+            persona.dni = "1234567-k";
+            persona.nombre = "Fulanito";
+            persona.edad= 42;
+            persona.nacimiento= new Date();
+            /*window.alert("Info persona: " +"\nNombre: "+ persona.nombre
+                    + "\nEdad: "+ persona.edad
+                    + "\nDni "+ persona.dni
+                    + "\nNacimiento "+ persona.nacimiento);*/
+            window.alert("Info persona: " +"\nNombre: "+ valor2.nombre
+                    + "\nEdad: "+ valor2.edad
+                    + "\nDni "+ valor2.dni
+                    + "\nNacimiento "+ valor2["nacimiento"]);
+            
+            persona["apellido"]="De lo que";
+            alert("Apellidos: "+ persona.apellido);
+            
+            ////////////COCHE////////////
+            var coche = {
+                "marca":"Audi",
+                "matricula":"KGH-1234",
+                "carburante": "Diesel",
+                "nivelDeposito": 60
+            }; // Nomenclatura json
+            
+            window.alert("NUESTRO COCHE: " +"\nMarca: "+ coche.marca
+                    + "\nMatricula: "+ coche.matricula
+                    + "\nCarburante: "+ coche.carburante
+                    + "\nNivel de Depósito: "+ coche["nivelDeposito"]);
+            
+            
+            
+        </script>
+    </body>
+</html>

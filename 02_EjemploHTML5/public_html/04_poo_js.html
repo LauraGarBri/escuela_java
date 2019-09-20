@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>POO con JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>POO con JS</div>
+        <script>
+            //Estilo EscmaScript 5 funcion constructora por usar new 
+            var Coche = function(matricula, marca) {
+                this.matricula = matricula;
+                this.marca = marca;
+                variableGlobal = "EXISTE " + marca;
+            };
+            
+            Coche.prototype.arrancar = function(){
+                document.write("<p>Arranca: " + this.marca + "</p>")
+                if(true){
+                    var local = "Local";
+                }
+                document.write("<p>Existe aun: " + local + "</p>")
+            };
+            
+            var miCoche = new Coche("1234-kjg", "Kia");
+            document.write("<p>" + miCoche.marca+" y " + miCoche.matricula+ "</p>")
+            miCoche.arrancar();
+            var tuCoche = new Coche("1245-rtr", "Ford");
+            tuCoche.arrancar();
+            alert(variableGlobal);
+            
+            //Otra forma de crear objetos con funciones 
+            var miCocheVacaciones = {
+                matricula: "9999-ñññ",
+                marca: "Audi",
+                autoconduccion: function(){
+                    document.write("<p>Dime donde voy</p>");
+                }
+            };
+            
+            miCocheVacaciones.autoconduccion();
+        </script>
+    </body>
+</html>

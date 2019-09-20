@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Comentarios-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        
+        <script>
+            var varNumerica = 7.6667;
+            var varTexto = "Texto";
+            console.log("hola" + varNumerica + " " + varTexto);
+            console.log(typeof varNumerica); //nos devuelve el tipo de dato 
+            var numero = parseFloat("ff 3.23");
+            console.log("numero = " + numero);//NaN es numerico (not a number)
+            var nulo = null;
+            console.log("variable nula: " + nulo);
+            console.log(typeof variableQueNoExiste);
+            
+            if(true){
+                console.log("Es cierto");
+            }
+            
+            var texto='';
+            for(var i=0; i< 10; i++){
+                texto += "Texto " + i +  "\n";
+            }
+            console.log(texto);
+            
+            texto = 100;
+            console.log(texto * 2);//Cambiar tipo de variable 
+                    
+            if(200 == "200"){
+                console.log("Es igual");
+            }
+            
+            if(200 === "200"){
+                console.log("Son identicos");
+            }else{
+                console.log("No son identicos");
+            }
+        </script>
+    </body>
+</html>

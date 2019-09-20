@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-sep-2019, 12:41:15
+    Author     : Formacion
+*/
+body{
+    background-image:  url("http://ist1-4.filesor.com/pimpandhost.com/8/2/8/3/82837/1/e/A/j/1eAjz/wallpaper-1174235.jpg");
+    text-align: center;
+    font-family:  monospace;
+}
+
+h1{
+    font-family:  fantasy;
+    color:  white;
+    
+}
+.imagen:hover {
+-webkit-transform: rotateY(180deg);
+-webkit-transform-style: preserve-3d;
+transform: rotateY(180deg);
+transform-style: preserve-3d;
+}
+
+	
+.imagen2:hover{
+border-radius:50%;
+-webkit-border-radius:50%;
+box-shadow: 0px 0px 15px 15px #ec731e;
+-webkit-box-shadow: 0px 0px 15px 15px #ec731e;
+transform: rotate(360deg);
+-webkit-transform: rotate(360deg);
+}
