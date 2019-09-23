@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculadora con JavaScript</title>
+        <link type="text/css" href="estilo.css" rel="stylesheet">
+    </head>
+    <body onload="init();">
+        <h1>Calculadora JS</h1>
+        <!--
+        <span id="resultado"></span>
+        <br/><br/>
+        <button id="uno"  value="1" class="botones">1</button>
+        <button id="dos"  value="2" class="botones" >2</button>
+        <button id="tres"  value="3" class="botones">3</button><br/>
+        <button id="cuatro"  value="4" class="botones" >4</button>
+        <button id="cinco"  value="5" class="botones" >5</button>
+        <button id="seis"  value="6" class="botones" >6</button><br/>
+        <button id="siete"  value="7" class="botones" >7</button>
+        <button id="ocho"  value="8" class="botones" >8</button>
+        <button id="nueve"  value="9" class="botones" >9</button><br/>
+        <button id="cero"  value="0" class="botones" >0</button>
+        <button id="suma"  value="+" class="botones" >+</button>
+        <button id="igual"  value="=" class="botones" >=</button>
+        <button id="reset"  value="C" class="botones" >C</button> -->
+
+
+
+
+        <table>
+            <tr>
+                <td colspan="4"><input type="text" readonly="readonly" id="resultado" class="result"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="siete" class="botones" value="7"></td>
+                <td><input type="button" id="ocho" class="botones" value="8"></td>
+                <td><input type="button" id="nueve" class="botones" value="9"></td>
+                <td><input type="button" id="division" class="botones" value="/"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="cuatro" class="botones" value="4"></td>
+                <td><input type="button" id="cinco" class="botones" value="5"></td>
+                <td><input type="button" id="seis" class="botones" value="6"></td>
+                <td><input type="button" id="multiplicacion" class="botones" value="x"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="button" id="uno" class="botones" value="1"></td>
+                <td><input type="button" id="dos" class="botones" value="2"></td>
+                <td><input type="button" id="tres" class="botones" value="3"></td>
+                <td><input type="button" id="resta" class="botones" value="-"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="igual" class="botones" value="="></td>
+                <td><input type="button" id="reset" class="botones" value="C"></td>
+                <td><input type="button" id="cero" class="botones" value="0"></td>
+                <td><input type="button" id="suma" class="botones" value="+"></td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+            </tr>
+        </table> 
+        <script src="funcionalidad.js"></script>
+    </body>
+</html>

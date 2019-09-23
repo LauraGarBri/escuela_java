@@ -11,21 +11,50 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-       <form name="miFormulario" id="miForm" method="get" action="">
-            Escribe una cantidad<br/><br/> 
-            <input type="number" id="sumandoUno" name="sumandoUno" /><br/><br/>
-            +<br/><br/>    
-            <input type="number" id="sumandoDos" name="sumandoDos" /><br/><br/>
-            <input type="submit" id="botonSuma" name="botonSuma" value="Calcular" onclick="sumar()"><br/><br/>
-            <input type="text" id="result" name="result"/>
-       </form>
+
+        Operando Uno<br/>
+        <input type="number" id="operandoUno" name="operandoUno" onkeypress='return validaNumericos(event)'/><br/><br/>
+        Operando Dos  <br/> 
+        <input type="number" id="operandoDos" name="operandoDos" onkeypress='return validaNumericos(event)'/><br/><br/>
+        <input type="submit" id="botonSuma" name="botonSuma" value="+" onclick="sumar()">
+        <input type="submit" id="botonResta" name="botonResta" value="-" onclick="restar()">
+        <input type="submit" id="botonMulti" name="botonMulti" value="x" onclick="multiplicar()">
+        <input type="submit" id="botonDivi" name="botonDivi" value="/" onclick="dividir()"><br/><br/>
+        Resultado<br/>
+        <input type="text" id="result" name="result" readOnly="readonly"/>
+
 
         <script>
-            var cantidad1 = document.getElementById("sumandoUno").value;
-            var cantidad2 = document.getElementById("sumandoDos").value;
+            var cantidad1 = document.getElementById("operandoUno");
+            var cantidad2 = document.getElementById("operandoDos");
             var resultado = document.getElementById("result");
             function sumar() {
-                resultado.value = parseInt(cantidad1) + parseInt(cantidad2);
+                resultado.value = parseFloat(cantidad1.value) + parseFloat(cantidad2.value);
+            }
+
+            function restar() {
+                resultado.value = parseFloat(cantidad1.value) - parseFloat(cantidad2.value);
+            }
+
+            function multiplicar() {
+                resultado.value = parseFloat(cantidad1.value) * parseFloat(cantidad2.value);
+            }
+
+            function dividir() {
+                //si dividimos un num entre 0 hay que controlarlo ya que no se puede
+                if (cantidad2.value == 0) {
+                    alert("No se puede dividir un numero entre 0");
+                } else {
+                    resultado.value = parseFloat(cantidad1.value) / parseFloat(cantidad2.value);
+                }
+            }
+            
+            //Funcion para validar solo numeros y punto
+            function validaNumericos(event) {
+                if ((event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46) {
+                    return true;
+                }
+                return false;
             }
 
         </script>
