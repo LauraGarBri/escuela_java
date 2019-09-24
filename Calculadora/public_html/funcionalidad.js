@@ -3,7 +3,9 @@ var operandoa;
 var operandob;
 var operacion;
 var resultado = document.getElementById("resultado");
-var uno = document.getElementById("uno");
+
+//var uno = document.getElementById("uno");
+var uno = $("#uno");
 var dos = document.getElementById("dos");
 var tres = document.getElementById("tres");
 var cuatro = document.getElementById("cuatro");

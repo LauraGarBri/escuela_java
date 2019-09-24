@@ -1,7 +1,10 @@
 class Calculadora {
     constructor() {
-        this.result = document.getElementById("resultado");
-        this.anterior = document.getElementById("anterior");
+        //this.result = document.getElementById("resultado");
+        //Lo mismo pero con jquery
+        this.result = $("#resultado");//# --> buscar por id
+        //this.anterior = document.getElementById("anterior");
+        this.anterior = $("#anterior");
         this.mem = 0;
         this.operador = "";
         this.nuevoNum = false;
@@ -10,20 +13,20 @@ class Calculadora {
 
     numeroPulsado(eventObj) {
         if (this.nuevoNum) {
-            this.result.value = "0";
+            this.result.val("0");
             this.nuevoNum = false;
         }
         let valor = eventObj.currentTarget.innerHTML;
 
         if (valor === "+/-") {
-            calculadora.result.value = "" + (-(parseFloat(calculadora.result.value)));
+            this.result.val("" + (-(parseFloat(calculadora.result.val()))));
         } else if (valor === ".") {
-            if (!this.result.value.includes(".")) {
-                this.result.value += valor;
+            if (!this.result.val().includes(".")) {
+                this.result.val(this.result.val()+ valor);
             }
         } else {
-            this.result.value += valor;
-            this.result.value = parseFloat(this.result.value);
+            this.result.val(this.result.val() + valor);
+            this.result.val(parseFloat(this.result.val()));
         }
     }
     operadorPulsado(evObj) {
@@ -32,12 +35,12 @@ class Calculadora {
         if (this.operador !== "" || operadorActual === "=") {
             this.calcular();
         }
-        this.mem = parseFloat(this.result.value);
+        this.mem = parseFloat(this.result.val());
         //subir a caja de texto el valor anterior y operador
 
         if (this.operador !== "=" && operadorActual !== "=") {
-            this.anterior.value = `${this.mem} ${operadorActual}`;
-            this.result.value = "0";
+            this.anterior.val(`${this.mem} ${operadorActual}`);
+            this.result.val("0");
             this.operador = operadorActual;
         } else {
             this.operador = "";
@@ -48,12 +51,13 @@ class Calculadora {
 
     calcular() {
         if (this.operador !== "" && this.operador !== "=") {
-            let valActual = parseFloat(this.result.value);
+            let valActual = parseFloat(this.result.val());
             let resultado = eval(this.mem.toString() + this.operador + valActual);
-            this.result.value = resultado;
+            this.result.val(resultado);
+            
+            $("#anterior").css("background-color","green");
         }
     }
-
 };
 
 let calculadora = null;
@@ -61,21 +65,28 @@ let calculadora = null;
 let inicializacion = function () {
     calculadora = new Calculadora();
 
-    let botones = document.getElementsByClassName("num");//devuelve un array de botones
-    let botonesOp = document.getElementsByClassName("oper");
+    $(".num").click((evtObj) =>{
+        calculadora.numeroPulsado(evtObj);
+    });
+    
+    $(".oper").click((evtObj) =>{
+        calculadora.operadorPulsado(evtObj);
+    });
 
-    for (let boton of botones) {
+    //let botones = document.getElementsByClassName("num");//devuelve un array de botones
+   /* for (let boton of botones) {
         boton.addEventListener("click", (evtObj) => {
             calculadora.numeroPulsado(evtObj);
         }); //Funcion callback
     }
-
+    
+   let botonesOp = document.getElementsByClassName("oper");
     for (let boton of botonesOp) {
-        boton.onclick = (evObj) => {
-            calculadora.operadorPulsado(evObj);
+        boton.onclick = (evtObj) => {
+            calculadora.operadorPulsado(evtObj);
         }; //Funcion callback
-    }
+    }*/
 };
 
-jQuery(document).ready(inicializacion);
+$(document).ready(inicializacion); //JQuery se sustituye por el dollar $()
 
