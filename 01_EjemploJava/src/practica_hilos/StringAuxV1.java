@@ -1,5 +1,6 @@
-package ConvertirStringAux;
+package practica_hilos;
 
+import ConvertirStringAux.*;
 import practica_hilos.IQuitarEspacios;
 import clasesjava.StringAux;
 import java.io.File;
