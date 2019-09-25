@@ -1,10 +1,5 @@
 package StringRober;
 
-<<<<<<< .mine
-import StringRober.StringAux;
-=======
-
->>>>>>> .theirs
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -13,12 +8,12 @@ import StringRober.IQuitarEspacio;
 /**
  * @author Laura Garcia
  */
-public class HiloCrearFichero {
+public class HiloFicheroNuevoSecuencial {
 
     //StringAuxV1 strAuxv1 = new StringAuxV1 ();
     private IQuitarEspacio strAuxv;
     
-    public HiloCrearFichero(IQuitarEspacio strAuxv){
+    public HiloFicheroNuevoSecuencial(IQuitarEspacio strAuxv){
         this.strAuxv = strAuxv;
     }
 
