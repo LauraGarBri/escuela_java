@@ -8,12 +8,12 @@ import StringRober.IQuitarEspacio;
 /**
  * @author Laura Garcia
  */
-public class HiloCrearFichero {
+public class HiloFicheroNuevoSecuencial {
 
     //StringAuxV1 strAuxv1 = new StringAuxV1 ();
     private IQuitarEspacio strAuxv;
     
-    public HiloCrearFichero(IQuitarEspacio strAuxv){
+    public HiloFicheroNuevoSecuencial(IQuitarEspacio strAuxv){
         this.strAuxv = strAuxv;
     }
 
