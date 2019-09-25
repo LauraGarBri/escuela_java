@@ -1,6 +1,6 @@
-package threads;
+package StringRober;
 
-import classjava.StringAux;
+import StringRober.StringAux;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

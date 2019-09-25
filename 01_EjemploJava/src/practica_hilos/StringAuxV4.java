@@ -1,24 +1,22 @@
 package practica_hilos;
 
-import ConvertirStringAux.*;
 import clasesjava.StringAux;
-import practica_hilos.IQuitarEspacios;
 
 /**
  * @author Laura Garcia
  */
-public class StringAuxV2 implements IQuitarEspacios {
+public class StringAuxV4 implements IQuitarEspacios {
 
     private StringAux strAux;
 
-    public StringAuxV2() {
+    public StringAuxV4() {
         this.strAux = new StringAux ("");
     }
     
  
     @Override
     public String quitarEspaciosSobrantes(String str) {
-        return StringAux.quitarEspSobrantesV2(str);
+        return StringAux.quitarEspSobrantes(str);
        
     }
      

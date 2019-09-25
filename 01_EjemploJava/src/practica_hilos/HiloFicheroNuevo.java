@@ -9,17 +9,23 @@ import java.util.Scanner;
 /**
  * @author Laura Garcia
  */
-public class HiloFicheroNuevo {
+public class HiloFicheroNuevo extends Thread {
 
     //StringAuxV1 strAuxv1 = new StringAuxV1 ();
     private StringAuxV1 strAuxv1;
-    StringAuxV2 strAuxv2;
     
     public HiloFicheroNuevo(StringAuxV1 strAuxv1){
         this.strAuxv1 = strAuxv1;
     }
 
 
+    public void run(){
+        
+    }
+    
+    
+    
+    
     public void leerFicheroEjem(String rutaFich){
         File fich = new File(rutaFich);
         Scanner escaner = null;
