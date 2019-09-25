@@ -11,11 +11,11 @@ import StringRober.StringAux3;
 import java.util.Date;
 
 public class TestPracticaHilos {
-       String ruta = "C:\\Users\\alumno\\Desktop\\ESCUELA JAVA\\LAURA\\01_EjemploJava\\texto.txt";
+       
 
     @Test
     public void TestPracticaSecuencial() {
-        
+        String ruta = "C:\\Users\\Formacion\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto.txt";
         long startTime = new Date().getTime();
         HiloFicheroNuevoSecuencial hiloFichero = new HiloFicheroNuevoSecuencial(1, new StringAux(), TestPracticaHilos::hiloTerminado);
         HiloFicheroNuevoSecuencial hiloFichero2 = new HiloFicheroNuevoSecuencial(2, new StringAux2(), TestPracticaHilos::hiloTerminado);
@@ -35,7 +35,7 @@ public class TestPracticaHilos {
     @Test
     public void TestPracticaCONCURRENTE() {
         long startTime = new Date().getTime();
-        //String ruta = "C:\\Users\\Formacion\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto.txt";
+        String ruta = "C:\\Users\\Formacion\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto.txt";
  
         HiloCrearFichero hilo1 = new HiloCrearFichero(1, new StringAux(), TestPracticaHilos::hiloTerminado, ruta);
         HiloCrearFichero hilo2 = new HiloCrearFichero(2, new StringAux2(), TestPracticaHilos::hiloTerminado, ruta);
