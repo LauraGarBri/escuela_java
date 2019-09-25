@@ -16,17 +16,22 @@ public class TestPracticaHilos {
         
         long startTime = new Date().getTime();
         
-        HiloFicheroNuevoSecuencial hiloFichero = new HiloFicheroNuevoSecuencial(new StringAux());
-        HiloFicheroNuevoSecuencial hiloFichero2 = new HiloFicheroNuevoSecuencial(new StringAux2());
-        HiloFicheroNuevoSecuencial hiloFichero3 = new HiloFicheroNuevoSecuencial(new StringAux3());
+        HiloFicheroNuevoSecuencial hiloFichero = new HiloFicheroNuevoSecuencial(1, new StringAux(), TestPracticaHilos::hiloTerminado);
+        HiloFicheroNuevoSecuencial hiloFichero2 = new HiloFicheroNuevoSecuencial(2, new StringAux2(), TestPracticaHilos::hiloTerminado);
+        HiloFicheroNuevoSecuencial hiloFichero3 = new HiloFicheroNuevoSecuencial(3, new StringAux3(), TestPracticaHilos::hiloTerminado);
         
         hiloFichero.leerFicheroEjem(ruta);
         hiloFichero2.leerFicheroEjem(ruta);
         hiloFichero3.leerFicheroEjem(ruta);
         
         
-        long endTime = new Date().getTime();
+        long endTime = new Date().getTime(); 
         
-        System.out.println("Ha tardado: " + (endTime-startTime) + "ms");
+        //System.out.println("Ha tardado: " + (endTime-startTime) + "ms");
+    }
+    public static Float[] hiloTerminado(Float[] param) {
+        System.out.println("CALLBACK>>>> " + param[0] + " Ha tardado: " + param[1]); 
+        
+        return new Float[]{};
     }
 }
