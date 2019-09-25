@@ -1,6 +1,6 @@
-package classjava;
+package StringRober;
 
-import threads.IQuitarEspacio;
+import StringRober.IQuitarEspacio;
 
 public class StringAux3 implements IQuitarEspacio {
 
