@@ -11,8 +11,6 @@ public class StringAux {
         this.string = string;
     }
     
-    
-
     public String getString() {
         return string;
     }
