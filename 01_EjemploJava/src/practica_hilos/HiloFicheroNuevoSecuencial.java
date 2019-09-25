@@ -12,11 +12,10 @@ import java.util.Scanner;
 public class HiloFicheroNuevoSecuencial {
 
     //StringAuxV1 strAuxv1 = new StringAuxV1 ();
-    private StringAuxV1 strAuxv1;
-    StringAuxV2 strAuxv2;
+    private IQuitarEspacios strAuxv;
     
-    public HiloFicheroNuevoSecuencial(StringAuxV1 strAuxv1){
-        this.strAuxv1 = strAuxv1;
+    public HiloFicheroNuevoSecuencial(IQuitarEspacios strAuxv){
+        this.strAuxv = strAuxv;
     }
 
 
@@ -28,7 +27,7 @@ public class HiloFicheroNuevoSecuencial {
             while(escaner.hasNextLine()){
                 String linea = escaner.nextLine();
                 
-                System.out.println(strAuxv1.quitarEspaciosSobrantes(linea));
+                System.out.println(strAuxv.quitarEspaciosSobrantes(linea));
                              
             }
         
