@@ -53,7 +53,9 @@ public class ServicioPersona {
         } else if (email.equals("")) {
             throw new IllegalArgumentException("El email esta vacio");
         } else if (mather.find() == false) {
-            throw new IllegalArgumentException("El email es incorrecto");            
+            throw new IllegalArgumentException("El email es incorrecto");
+        } else if (password.equals("")) {
+            throw new IllegalArgumentException("El password esta vacio");
         } else {
             if (edadPersona <= 12) {
                 throw new IllegalArgumentException("La edad debe ser mayor de 12");
