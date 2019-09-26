@@ -21,6 +21,10 @@
             <input id="nombre" readonly="readonly" value="<%= pers.getNombre() %>"/>
             <label for="edad">Edad: </label>
             <input id="edad" readonly="readonly" value="<%= pers.getEdad() %>"/>
+            <label for="email">Email: </label>
+            <input id="email" readonly="readonly" value="<%= pers.getEmail() %>"/>
+            <label for="password">Password: </label>
+            <input id="password" readonly="readonly" value="<%= pers.getPassword()%>"/>
         <% }else{ %>
             <span style="color: red">
                 No se han encontrado resultados

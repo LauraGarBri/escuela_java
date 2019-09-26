@@ -39,9 +39,11 @@ public class ControladorPersonasServlet extends HttpServlet {
 
         String nombre = request.getParameter("nombre");
         String edad = request.getParameter("edad");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         try {
-            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad);
+            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad,email,password);
 
             if (p == null) { //Si la persona es nula enviamos a otra pagina
                 request.getRequestDispatcher("error.jsp").forward(request, response);
