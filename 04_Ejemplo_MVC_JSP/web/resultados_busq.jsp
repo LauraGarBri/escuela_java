@@ -15,20 +15,26 @@
     <body>
         <h1>Resultados busqueda</h1>
         <h2>Usuario</h2>
+        
+        <form name="formModif" method="put" action="./personas.do"> 
+        
         <% Persona pers =(Persona)session.getAttribute("resultadoBusq");%>
         <% if(pers != null){ %>
             <label for="nombre">Nombre: </label>
-            <input id="nombre" readonly="readonly" value="<%= pers.getNombre() %>"/>
+            <input id="nombre"  value="<%= pers.getNombre() %>"/>
             <label for="edad">Edad: </label>
-            <input id="edad" readonly="readonly" value="<%= pers.getEdad() %>"/>
+            <input id="edad"  value="<%= pers.getEdad() %>"/>
             <label for="email">Email: </label>
-            <input id="email" readonly="readonly" value="<%= pers.getEmail() %>"/>
+            <input id="email"  value="<%= pers.getEmail() %>"/>
             <label for="password">Password: </label>
-            <input id="password" readonly="readonly" value="<%= pers.getPassword()%>"/>
+            <input id="password"  value="<%= pers.getPassword()%>"/>
+            <input type="submit" value="Modificar" />
         <% }else{ %>
             <span style="color: red">
                 No se han encontrado resultados
             </span>
         <% } %>
+
+        </form>
     </body>
 </html>
