@@ -1,15 +1,7 @@
-<%-- 
-
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="head.jsp" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registro</title>
-        <link rel="stylesheet" href="./estilos/estilos.jsp">
-    </head>
+    <%= head ("Registro") %>
     <body>
         <%@include file="header.jsp" %>
         <div>Registro</div>
