@@ -53,4 +53,8 @@ public class Persona {
         this.edad = edad;
     }
 
+    
+    public boolean igualNombre(String nombre){
+        return this.nombre.equals(nombre);
+    }
 }

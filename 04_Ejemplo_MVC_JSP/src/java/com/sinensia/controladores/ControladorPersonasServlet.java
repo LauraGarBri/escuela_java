@@ -25,9 +25,9 @@ public class ControladorPersonasServlet extends HttpServlet {
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre");
         //String edad = request.getParameter("edad");
-        
+
         Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-        
+
         request.getSession().setAttribute("resultadoBusq", p);
         request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
 
@@ -36,29 +36,62 @@ public class ControladorPersonasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        Persona p;
         String nombre = request.getParameter("nombre");
         String edad = request.getParameter("edad");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String valor = request.getParameter("metodo");
+        if (valor == null)
+            valor ="";
+        
 
-        try {
-            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad,email,password);
+       // if (!valor.equals("modificar")) {
+        if (  !valor.equalsIgnoreCase("modificar")) {
+            try {
+                p = ServicioPersona.getInstancia().addPersonas(nombre, edad, email, password);
+              
 
-            if (p == null) { //Si la persona es nula enviamos a otra pagina
+                if (p == null) { //Si la persona es nula enviamos a otra pagina
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("exito.jsp").forward(request, response);
+                }
+            } catch (NumberFormatException ex) {
+                request.getSession().setAttribute("mensajeError", "Error numerico: " + ex.getMessage());
                 request.getRequestDispatcher("error.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("exito.jsp").forward(request, response);
+            } catch (IllegalArgumentException ex) {
+                request.getSession().setAttribute("mensajeError", "Error de campos: " + ex.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            } catch (Exception ex) {
+                request.getSession().setAttribute("mensajeError", "Error generico: " + ex.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-        }catch(NumberFormatException ex){
-            request.getSession().setAttribute("mensajeError","Error numerico: " + ex.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }catch(IllegalArgumentException ex){
-            request.getSession().setAttribute("mensajeError","Error de campos: " + ex.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }catch(Exception ex){
-            request.getSession().setAttribute("mensajeError","Error generico: " + ex.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            
+            
+        } else {
+            try {
+                String nombreAntiguo = request.getParameter("nombreAntiguo");
+              
+               
+                p= ServicioPersona.getInstancia().cambiarDatos(nombre,nombreAntiguo,edad,email,password);
+           
+            if (p == null) { //Si la persona es nula enviamos a otra pagina
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("exito.jsp").forward(request, response);
+                }
+            } catch (NumberFormatException ex) {
+                request.getSession().setAttribute("mensajeError", "Error numerico: " + ex.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            } catch (IllegalArgumentException ex) {
+                request.getSession().setAttribute("mensajeError", "Error de campos: " + ex.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            } catch (Exception ex) {
+                request.getSession().setAttribute("mensajeError", "Error generico: " + ex.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+
         }
     }
 
