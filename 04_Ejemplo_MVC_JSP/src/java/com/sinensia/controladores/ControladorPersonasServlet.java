@@ -46,7 +46,6 @@ public class ControladorPersonasServlet extends HttpServlet {
             valor = "";
         }
 
-        // if (!valor.equals("modificar")) {
         if (valor.equalsIgnoreCase("modificar")) {
             try {
                 String nombreAntiguo = request.getParameter("nombreAntiguo");
@@ -76,7 +75,7 @@ public class ControladorPersonasServlet extends HttpServlet {
                 if (p == null) { //Si la persona es nula enviamos a otra pagina
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("exito.jsp").forward(request, response);
+                    request.getRequestDispatcher("eliminado.jsp").forward(request, response);
                 }
             } catch (NumberFormatException ex) {
                 request.getSession().setAttribute("mensajeError", "Error numerico: " + ex.getMessage());
@@ -109,7 +108,6 @@ public class ControladorPersonasServlet extends HttpServlet {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
 
-            //-----------
         }
     }
 
