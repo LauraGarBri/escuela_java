@@ -75,24 +75,9 @@ public class ServicioPersona {
         return null;
     }
 
-    //Metodo para modificar el nombre de una persona
-    public Persona modificarPersona(String nombreNuevo, String edadNueva,
-            String emailNuevo, String passNueva) {
+    
 
-        int edadPersona = Integer.parseInt(edadNueva);
-
-        for (Persona p : personas) {
-
-            p.setNombre(nombreNuevo);
-            p.setEdad(edadPersona);
-            p.setEmail(emailNuevo);
-            p.setPassword(passNueva);
-            return p;
-        }
-        return null;
-    }
-
-    public boolean removePersona(String nombre) {
+    /*public boolean removePersona(String nombre) {
         Persona perElim = null;
         for (Persona p : personas) {
             if (p.getNombre().equalsIgnoreCase(nombre)) {
@@ -107,7 +92,7 @@ public class ServicioPersona {
             return true;
         }
 
-    }
+    }*/
 
     public void darDeBaja(String nombre) {
         //Declaramos variable 
