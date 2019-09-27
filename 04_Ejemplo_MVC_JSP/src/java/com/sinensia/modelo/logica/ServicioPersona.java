@@ -130,4 +130,17 @@ public class ServicioPersona {
         return actual;
     }
 
+    
+    
+    public String mostrarInfo(){
+         //Declaro variable      
+        String cadena;
+        
+        cadena = "\n";
+        
+        for(Persona x: personas){
+            cadena += x.toString() + "\n";
+        }
+        return cadena; 
+    }
 }

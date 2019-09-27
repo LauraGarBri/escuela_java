@@ -31,6 +31,6 @@
                     <td><input type='text' name='nombre' id='nombre' /></td>
                     <td><input type='submit' value="Buscar" /></td></tr>
             </table>
-        </form>
+        </form>     
     </body>
 </html>
