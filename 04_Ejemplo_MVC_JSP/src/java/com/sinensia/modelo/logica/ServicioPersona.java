@@ -94,9 +94,9 @@ public class ServicioPersona {
 
     }*/
 
-    public void darDeBaja(String nombre) {
+    public Persona darDeBaja(String nombre) {
         //Declaramos variable 
-        Persona actual;
+        Persona actual=null;
         Iterator<Persona> iterador = personas.iterator();
 
         while (iterador.hasNext()) {
@@ -105,6 +105,7 @@ public class ServicioPersona {
                 iterador.remove();
             }
         }
+        return actual;
     }
 
     public Persona cambiarDatos(String nombreNuevo,String nombreAntiguo, String edad,
