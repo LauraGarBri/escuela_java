@@ -35,4 +35,23 @@ public class UserService {
     public List<User> getAll() throws SQLException {
         return daoUsers.getAll();
     }
+    
+    public boolean remove(int id) throws SQLException {
+        return daoUsers.remove(id);       
+    }
+    
+    
+    public User update(String email,String password,String name, int age)throws SQLException{
+        User user = null;
+        if (email != null && password != null && name != null) {
+            if (email.length() > 3 && !password.equals("") && !name.equals("") && age > 0) {
+
+               
+                user = daoUsers.update(user);
+
+            }
+        }
+        return user;
+    }
+    
 }

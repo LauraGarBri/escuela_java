@@ -47,12 +47,23 @@ public class UserDAO_DerbyDB implements IUserDAO {
         //Evitamos Sql Injection
         String sqlQuery = "INSERT INTO users (email, password, name, age) VALUES (?,?,?,?)";
         PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+
         prepStmt.setString(1, user.getEmail());
         prepStmt.setString(2, user.getPassword());
         prepStmt.setString(3, user.getName());
         prepStmt.setInt(4, user.getAge());
-
         prepStmt.executeUpdate();
+
+        //Buscamos el id a traves del email
+        String sqlQuery2 = "SELECT id FROM users WHERE email='" + user.getEmail() + "'";
+
+        Statement stmt = con.createStatement();
+        ResultSet res = stmt.executeQuery(sqlQuery2);
+
+        if (res.next()) {
+            int id = res.getInt("id");
+            user.setId(id);
+        }
 
         con.close();
         return user;
@@ -83,11 +94,49 @@ public class UserDAO_DerbyDB implements IUserDAO {
 
     @Override
     public boolean remove(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        boolean valor = false;
+
+        try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PASSWD_DB)) {
+            String sqlQuery = "DELETE FROM users WHERE id=?";
+            PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+            prepStmt.setInt(1, id);
+            int result = prepStmt.executeUpdate();
+            if (result == 1) {
+                System.out.println("El usuario ha sido eliminado");
+                return valor;
+            }
+
+        }
+        return valor;
+
     }
 
     @Override
     public boolean remove(User user) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /*@Override
+    public User update(User user) throws SQLException {
+        try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PASSWD_DB)) {
+            Statement sentencia = con.createStatement();
+            
+
+            String sql = "UPDATE users SET email = '" + user.setEmail(email) + "','" 
+                    + user.setPassword(password) + "','" + user.setName(name) + "'," 
+                    + user.setAge(age) + " WHERE id ='" + user.getId() + "'  ";
+            
+            sentencia.executeQuery(sql);
+
+        }
+
+        return user;
+
+    }*/
+
+    @Override
+    public User update(User user) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

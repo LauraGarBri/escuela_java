@@ -92,11 +92,17 @@ public class TryModelDAO {
             assertFalse(u4.getAge() != 50);
 
             // Repetido que debe fallar
-            User u5 = userSrv.create("ddd@mail.com", "d1234", "D. D. Dd", 50);
-            assertNull(u5);
+            try{
+                User u5 = userSrv.create("ddd@mail.com", "d1234", "D. D. Dd", 50);
+               fail("Error en SQL: ");
+            }catch(Exception ex){
+                ex.getMessage();
+            }
+            
+            userSrv.remove(u1.getId());
 
-            allUsers = userSrv.getAll();
-            assertEquals(totalUsersBefore + 4, allUsers.size());
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(TryModelDAO.class.getName()).log(Level.SEVERE, null, ex);
             fail("Error en SQL: " + ex.getMessage());
