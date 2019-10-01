@@ -39,19 +39,39 @@ public class UserService {
     public boolean remove(int id) throws SQLException {
         return daoUsers.remove(id);       
     }
+       
+    public User update(User user) throws SQLException {
+        
+        if (validate(user.getEmail(), user.getPassword(), user.getName(), 
+                Integer.toString(user.getAge()))) {
+            return daoUsers.update(user);
+        } else {
+            return null;
+        }
+    }
     
-    
-    public User update(String email,String password,String name, int age)throws SQLException{
-        User user = null;
-        if (email != null && password != null && name != null) {
-            if (email.length() > 3 && !password.equals("") && !name.equals("") && age > 0) {
+     public boolean validate(String email, String password, String name, String strEdad) {
+        if (email != null && password != null && name != null && strEdad != null) {
+            if (!strEdad.matches("[0-9]{1,3}")) {
+                throw new IllegalArgumentException("La edad no es un número válido");
+            } else {
+                int edad = Integer.parseInt(strEdad);
+                if (email.length() > 3
+                        && !password.equals("")
+                        && !name.equals("")
+                        && edad > 0) {
 
-               
-                user = daoUsers.update(user);
-
+                    return true;
+                }
             }
         }
-        return user;
+        return false;
     }
+    
+    
+    
+    
+    
+    
     
 }

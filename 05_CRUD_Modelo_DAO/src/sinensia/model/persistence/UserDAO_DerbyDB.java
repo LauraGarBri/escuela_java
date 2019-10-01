@@ -134,9 +134,27 @@ public class UserDAO_DerbyDB implements IUserDAO {
         return user;
 
     }*/
-
+    
+     
+   
+    
     @Override
-    public User update(User user) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User update(User user)throws SQLException{
+        
+        try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PASSWD_DB)) {
+             PreparedStatement stmt = con.prepareStatement("UPDATE users SET email = ?, "
+                     + "password = ?, name = ?,age = ? WHERE id = ?"); 
+                stmt.setString(1, user.getEmail());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getName());
+                stmt.setInt(4, user.getAge());
+                stmt.setInt(5, user.getId());
+
+                stmt.executeUpdate();
+            }
+        
+        return user;
     }
+
+    
 }

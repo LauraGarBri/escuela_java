@@ -1,10 +1,12 @@
 package sinensia.model;
 
+import java.io.Serializable;
+
 /**Clase que define los campos de los usuarios
  * 
  * @author Laura Garcia
  */
-public class User {
+public class User implements Serializable{
 
     private Integer id;    
     private String email; 

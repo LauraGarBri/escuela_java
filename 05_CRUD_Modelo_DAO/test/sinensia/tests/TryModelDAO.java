@@ -51,9 +51,9 @@ public class TryModelDAO {
 
     @Test
     public void createAndListUsersFail() {
-        
+        List<User> allUsers;
         try {
-            List<User> allUsers;
+
             allUsers = userSrv.getAll();
             int totalUsersBefore = allUsers.size();
             User u1 = userSrv.create(null, null, null, 0);
@@ -77,10 +77,9 @@ public class TryModelDAO {
 
     @Test
     public void createAndListUsersOK() {
-      
-        try {  
-            List<User> allUsers;
-            allUsers = userSrv.getAll();
+
+        try {
+            List<User> allUsers = userSrv.getAll();
             int totalUsersBefore = allUsers.size();
             User u1 = userSrv.create("aaa@mail.com", "a1234", "Aaaaa", 20);
             User u2 = userSrv.create("bbb@mail.com", "b1234", "B. Bbbb", 30);
@@ -92,22 +91,59 @@ public class TryModelDAO {
             assertFalse(u4.getAge() != 50);
 
             // Repetido que debe fallar
-            try{
+            try {
                 User u5 = userSrv.create("ddd@mail.com", "d1234", "D. D. Dd", 50);
-               fail("Error en SQL: ");
-            }catch(Exception ex){
-                ex.getMessage();
+                fail("No debe crearse usuario, está duplicado");
+            } catch (Exception e) {
             }
-            
-            userSrv.remove(u1.getId());
 
+            allUsers = userSrv.getAll();
+            assertEquals(totalUsersBefore + 4, allUsers.size());
+
+            //Modificar el usuario 3
+            u3.setName("erererere");
+            userSrv.update(u3);
+
+            //Eliminar usuario
+            userSrv.remove(u1.getId());
+            userSrv.remove(u2.getId());
+            userSrv.remove(u3.getId());
+            userSrv.remove(u4.getId());
             
-            
+
+            //Comprobar que se ha eliminado
+            allUsers = userSrv.getAll();
+            assertEquals(totalUsersBefore, allUsers.size());
+
         } catch (SQLException ex) {
             Logger.getLogger(TryModelDAO.class.getName()).log(Level.SEVERE, null, ex);
             fail("Error en SQL: " + ex.getMessage());
-            
+
         }
 
+    }
+
+    @Test
+    public void updateUsersOK() {
+
+        try {
+            List<User> allUsers = userSrv.getAll();
+            int totalUsersBefore = allUsers.size();
+            User u1 = userSrv.create("aaa@mail.com", "a1234", "Aaaaa", 20);
+            User u2 = userSrv.create("bbb@mail.com", "b1234", "B. Bbbb", 30);
+            User u3 = userSrv.create("ccc@mail.com", "c1234", "Cccc C.", 40);
+            User u4 = userSrv.create("ddd@mail.com", "d1234", "D. D. Dd", 50);
+            
+            
+            //Modificar el usuario 3
+            u3.setName("rrrwewe");
+            userSrv.update(u3);
+            
+            
+            assertEquals(u3.getName(), "rrrwewe");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TryModelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
