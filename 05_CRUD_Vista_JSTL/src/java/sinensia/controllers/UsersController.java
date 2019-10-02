@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sinensia.controllers;
 
 import java.io.IOException;
@@ -7,16 +12,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sinensia.model.User;
 import sinensia.model.logic.UserService;
+import sinensia.model.User;
 import sinensia.model.persistence.IUserDAO;
 import sinensia.model.persistence.UserDAO_DerbyDB;
 
 /**
- * @author Laura Garcia
+ *
+ * @author alumno
  */
 @WebServlet(asyncSupported = true, urlPatterns = "/users.do")
 public class UsersController extends HttpServlet {
@@ -27,34 +34,64 @@ public class UsersController extends HttpServlet {
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
 
-        IUserDAO userDAO = new UserDAO_DerbyDB();
-        this.userSrv = new UserService(userDAO);
+        IUserDAO usersDAO = new UserDAO_DerbyDB();
+        this.userSrv = new UserService(usersDAO);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        try {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+         try {
+            String id = req.getParameter("id");
             String email = req.getParameter("email");
             String password = req.getParameter("password");
             String name = req.getParameter("name");
             int age = Integer.parseInt(req.getParameter("age"));
+            String edad = req.getParameter("age");
 
-            userSrv.create(email, password, name, age);
-        } catch (SQLException ex) {
+            String method = req.getParameter("method");
+            if ("Delete".equals(method)) {
+                userSrv.remove(Integer.parseInt(id));
+            } else if ("Update".equals(method)) {
+                User updUsr = userSrv.update(Integer.parseInt(id), email, password, name, edad);
+                req.setAttribute("user", updUsr);
+            } else {
+                User newUser = userSrv.create(email, password, name, age);
+                req.setAttribute("user", newUser);
+            }
+        } catch (Exception ex) {
             Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+            req.setAttribute("errorMessage", ex.getMessage());
+        } finally {
+            req.getRequestDispatcher("result.jsp").forward(req, resp);
         }
-
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
-            List<User> listUser = userSrv.getAll(); //Obtenemos los datos en este objeto
-            req.setAttribute("usersList", listUser); //Añadiendo informacion a la peticion (clave y valor)
-            req.getRequestDispatcher("listUsers.jsp").forward(req, resp); //Redirigimos a la vista
-        }catch(Exception ex){
-             Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+     try {
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+            if (email != null && password != null) {
+                User user = userSrv.getValidUser(email, password);
+                if (user != null) {
+                    req.getSession().setAttribute("userLogged", user);
+                    resp.addCookie(new Cookie("email", email));
+                    req.getRequestDispatcher("result.jsp").forward(req, resp);
+                } else {
+                    req.getSession().removeAttribute("userLogged");
+                    throw new Exception("Error en email y password");
+                }
+            } else {
+                List<User> listUsers = userSrv.getAll();
+                req.setAttribute("usersList", listUsers);
+                req.getRequestDispatcher("listUsers.jsp").forward(req, resp);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+            req.setAttribute("errorMessage", ex.getMessage());
+        } finally {
+            req.getRequestDispatcher("result.jsp").forward(req, resp);
         }
     }
 

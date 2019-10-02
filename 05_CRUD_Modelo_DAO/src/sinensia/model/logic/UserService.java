@@ -70,8 +70,19 @@ public class UserService {
     
     
     
+    public User update(int id, String email, String password, String name, String strEdad) throws SQLException {
+        User u = null;
+        if (validate(email, password, name, strEdad)) {
+            int edad = Integer.parseInt(strEdad);
+            u = new User(email, password, name, edad);
+            u.setId(id);
+            u = daoUsers.update(u);
+        }
+        return u;
+    }
     
-    
-    
+    public User getValidUser(String email,String password) throws SQLException{
+        return daoUsers.getValidUser(email, password);
+    }
     
 }
