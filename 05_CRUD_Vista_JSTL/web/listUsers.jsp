@@ -14,35 +14,40 @@
     <body>
         <h1>Users list</h1>
         <%-- ${} corresponde a EL (Expression Language) de JSTL --%>
-        
-        <c:forEach items="${usersList}" var="user">
-            <form action="users.do" method="post">
-                <table>
-                    <tr>
-                        <td><input id="id" name="id" 
-                                   readonly type="number" size="4" 
-                                   value="${user.id}"/></td>
-                        <td><input id="email" name="email" 
-                                   type="email" size="30" 
-                                   maxlength="255"
-                                   value="${user.email}"/></td>
-                        <td><input id="password" name="password" 
-                                   type="text" size="15" 
-                                   maxlength="50"
-                                   value="${user.password}"/></td>
-                        <td><input id="name" name="name" 
-                                   type="text" size="15" 
-                                   maxlength="50"
-                                   value="${user.name}"/></td>
-                        <td><input id="age" name="age" 
-                                   type="number" size="5" 
-                                   maxlength="3" min="1" max="199"
-                                   value="${user.age}"/></td>
-                        <td><input name="method" type="submit" value="Update"/></td>
-                         <td><input name="method" type="submit" value="Delete"/></td>
-                    </tr>
-                </table>
-            </form>
-        </c:forEach>
+        <c:if test="${sessionScope.userLogged != null}">
+            <c:forEach items="${usersList}" var="user">
+                <form action="users.do" method="post">
+                    <table>
+                        <tr>
+                            <td><input id="id" name="id" 
+                                       readonly type="number" size="4" 
+                                       value="${user.id}"/></td>
+                            <td><input id="email" name="email" 
+                                       type="email" size="30" 
+                                       maxlength="255"
+                                       value="${user.email}"/></td>
+                            <td><input id="password" name="password" 
+                                       type="text" size="15" 
+                                       maxlength="50"
+                                       value="${user.password}"/></td>
+                            <td><input id="name" name="name" 
+                                       type="text" size="15" 
+                                       maxlength="50"
+                                       value="${user.name}"/></td>
+                            <td><input id="age" name="age" 
+                                       type="number" size="5" 
+                                       maxlength="3" min="1" max="199"
+                                       value="${user.age}"/></td>
+                            <td><input name="method" type="submit" value="Update"/></td>
+                            <td><input name="method" type="submit" value="Delete"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </c:forEach>
+        </c:if>
+        <c:if test="${sessionScope.userLogged == null}">
+            You didn't logged
+            <a href="index.jsp">Home</a>
+        </c:if>
     </body>
 </html>

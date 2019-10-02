@@ -38,6 +38,10 @@
                 </div>
                 <input type='submit' value='Register' class="btn btn-primary"/>
             </form>
+
+            
         </div>
+        <script src="js/md5.min.js"></script>
+            <script src="js/encrypt_register.js"></script>
     </body>
 </html>

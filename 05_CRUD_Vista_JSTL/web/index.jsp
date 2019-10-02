@@ -27,5 +27,7 @@
                        value=""/><br/>
             <input name="method" type="submit" value="Login"/>         
         </form>        
+            <script src="js/md5.min.js"></script>
+            <script src="js/encrypt.js"></script>
     </body>
 </html>
