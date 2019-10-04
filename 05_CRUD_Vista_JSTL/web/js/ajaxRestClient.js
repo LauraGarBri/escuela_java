@@ -20,7 +20,10 @@ window.onload = function(){
             }
         }
     };
+    
+    ajaxObj.setRequestHeader()
+    
+    
     ajaxObj.open("GET", "api/users");
     ajaxObj.send();
-}
-;
+};

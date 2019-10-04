@@ -43,6 +43,23 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+            
+            String jsonUser= req.getParameter("json");
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, jsonUser);
+
+            User userObject = new Gson().fromJson(jsonUser, User.class);
+            
+            
+        try {
+            userObject = userSrv.create(userObject.getEmail(), userObject.getPassword(), userObject.getName(),userObject.getAge());
+            //Serializamos el userObject en un JSON y devolvemos la respuesta 
+            resp.setContentType("application/json;charset=UTF-8");
+            Gson gson = new Gson();
+            String textJson = gson.toJson(userObject);
+            resp.getWriter().print(textJson);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -64,5 +81,28 @@ public class UsersRestController extends HttpServlet {
             resp.getWriter().print("{\"error\": \"" + ex.getMessage() + "\"}");
         }
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        
+        try {
+            userSrv.remove(Integer.parseInt(id));
+            resp.getWriter().print("OK");
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+            resp.getWriter().print("ERROR" + ex.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
 
 }
