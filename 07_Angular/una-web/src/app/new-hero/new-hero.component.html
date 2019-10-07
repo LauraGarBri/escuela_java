@@ -1,0 +1,7 @@
+<div>
+    <input type="number" id="id" [(ngModel)] = "newId" placeholder="Id" />
+    <input type="text" id="name" [(ngModel)] = "newName" placeholder="Nombre" />
+</div>
+<div>
+        <input type="button"  value="Añadir" (click)="heroSrv.agregarHeroe( {id: newId,name:newName})"/>
+</div>
