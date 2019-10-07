@@ -19,7 +19,7 @@ export class HeroService {
   }
 
   //metodo añadir el nuevo heroe
-  agregarHeroe(newhero: Hero) {
+  add(newhero: Hero) {
     this.arrayheroe.push(newhero);
   }
 

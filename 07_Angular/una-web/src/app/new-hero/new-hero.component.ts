@@ -9,18 +9,19 @@ import {HeroService} from "../hero.service";
   styleUrls: ['./new-hero.component.css']
 })
 export class NewHeroComponent implements OnInit {
-  heroes: Hero;
+  newHero: Hero;
   
 
   constructor(private heroSrv: HeroService) { }
 
   ngOnInit() {
-    //this.heroes = this.heroSrv.nuevoHeroe();
+    this.newHero = new Hero();
   }
 
   //Evento onclick
-  /*nuevoHeroe(): void {
-    this.heroSrv.agregarHeroe(this.heroes);
-    this.heroes = this.heroSrv.nuevoHeroe();
-  }*/
+  createHero(): void {
+    this.heroSrv.add(this.newHero);
+    // Crear uno nuevo para la siguiente vez
+    this.newHero = new Hero();
+  }
 }
