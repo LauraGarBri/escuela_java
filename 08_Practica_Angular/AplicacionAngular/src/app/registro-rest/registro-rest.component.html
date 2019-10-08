@@ -1,9 +1,8 @@
-<h2>LIstado de heroes</h2>
+<h2>LIstado de Usuarios</h2>
   <ul>
-    <li *ngFor = "let hero of heroesRecibidos"> {{hero.id}}-{{hero.name}}</li>
+    <li *ngFor = "let usuario of usuariosRecibidos"> {{usuario.id}}-{{usuario.name}}-</li>
   </ul>
   <div>
-    <input [(ngModel)]="id" placeholder="ID:"/>
     <input [(ngModel)]="email" placeholder="Email"/>
     <input [(ngModel)]="password" placeholder="Password"/>
     <input [(ngModel)]="name" placeholder="Name"/>
@@ -13,4 +12,3 @@
   <div>
     <input type="button" (click)="enviar()" value="ENVIAR"/>
   </div>
-

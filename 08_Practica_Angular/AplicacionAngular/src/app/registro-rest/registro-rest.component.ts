@@ -23,11 +23,11 @@ export class RegistroRestComponent implements OnInit {
   enviar() {
     let nuevoUsuario = new Usuario();
     //nuevoUsuario.id = parseInt(this.id);
+    nuevoUsuario.email = this.email;
+    nuevoUsuario.password = this.password;
     nuevoUsuario.name = this.name;
-    this.usuarioRestSrv.add(nuevoUsuario).subscribe((obj) => {
-      this.ngOnInit();
-    });
-
+    nuevoUsuario.age = parseInt(this.age)
+    this.usuarioRestSrv.add(nuevoUsuario).subscribe((obj=>{this.ngOnInit()}));
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class RegistroRestComponent implements OnInit {
 
     //En una sola linea se puede hacer todo lo anterior
      //this.usuarioRestSrv.getUsuarios().subscribe(heroesRec => this.usuariosRecibidos = heroesRec);
-     
+
      this.usuarioRestSrv.getUsuarios().subscribe(
       heroesRec => this.usuariosRecibidos = heroesRec
     ); 
