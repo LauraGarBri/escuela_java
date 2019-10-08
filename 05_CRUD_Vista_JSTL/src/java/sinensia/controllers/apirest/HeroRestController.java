@@ -109,15 +109,11 @@ public class HeroRestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        //Recicir el JSON como parámetro de FORMulario
-        //String jsonUser = req.getParameter("json");
+        
         BufferedReader bufRead = req.getReader();
         String jsonUser;
         jsonUser = bufRead.readLine();
-        /*String li
-         while (jsonUser != null) {
-             jsonUser += bu
-         }*/
+        
         Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, jsonUser);
 
         Hero heroObject = new Gson().fromJson(jsonUser, Hero.class);

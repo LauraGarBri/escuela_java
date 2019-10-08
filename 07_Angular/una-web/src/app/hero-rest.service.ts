@@ -9,11 +9,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class HeroRestService {
 
-  arrayheroe: Hero[];
+
   urlApiRest = "http://localhost:8084/CRUD_Vista_JSTL/api/heroes";
+  httpOptions ={  
+    headers: new HttpHeaders({'Content-Type':"application/json"})
+  };
 
   constructor(private httpCli: HttpClient) {
-    this.arrayheroe = HEROES;
+
   }
 
   getHeroes(): Observable<Hero[]> {
@@ -23,14 +26,7 @@ export class HeroRestService {
   }
 
   //metodo añadir el nuevo heroe
-  add(newhero: Hero) {
-    this.arrayheroe.push(newhero);
-  }
-
-  getHero(id: number): Hero {
-
-    let hero = this.arrayheroe.find(hero => hero.id === id);
-    return hero;
-
+  add(newhero: Hero):Observable<Hero> {
+    return this.httpCli.post<Hero>(this.urlApiRest,newhero,this.httpOptions);
   }
 }
