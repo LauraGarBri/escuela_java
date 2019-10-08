@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RouterOutletComponent } from './router-outlet.component';
+import { RegistroRestComponent } from './registro-rest.component';
 
-describe('RouterOutletComponent', () => {
-  let component: RouterOutletComponent;
-  let fixture: ComponentFixture<RouterOutletComponent>;
+describe('RegistroRestComponent', () => {
+  let component: RegistroRestComponent;
+  let fixture: ComponentFixture<RegistroRestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterOutletComponent ]
+      declarations: [ RegistroRestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RouterOutletComponent);
+    fixture = TestBed.createComponent(RegistroRestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

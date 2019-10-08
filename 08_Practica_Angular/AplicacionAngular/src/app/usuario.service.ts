@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './model/usuario';
 import { MensajesService } from './mensajes.service';
-import {USUARIOS} from './model/array-usuario';
+import { USUARIOS } from './model/array-usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class UsuarioService {
 
   private arrayUsuario: Usuario[];
 
-  constructor(private mensajeSrv : MensajesService) {
+  constructor(private mensajeSrv: MensajesService) {
     this.arrayUsuario = USUARIOS;
-   }
+  }
 
   getUsuarios(): Usuario[] {
     this.mensajeSrv.add("usuarioService: capturando usuarios");
@@ -24,10 +24,10 @@ export class UsuarioService {
     this.arrayUsuario.push(newUsuario);
   }
 
-  getUsuario(id: number):Usuario {
-    
-   let usuario = this.arrayUsuario.find(usuario => usuario.id ===id);
-     return usuario;
-    
+  getUsuario(id: number): Usuario {
+
+    let usuario = this.arrayUsuario.find(usuario => usuario.id === id);
+    return usuario;
+
   }
 }

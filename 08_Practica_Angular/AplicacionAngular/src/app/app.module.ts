@@ -4,12 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
-import { RouterOutletComponent } from './router-outlet/router-outlet.component';
 import { ListadoComponent } from './listado/listado.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule }    from '@angular/common/http';
+import { RegistroRestComponent } from './registro-rest/registro-rest.component';
 
 
 
@@ -17,10 +17,10 @@ import { HttpClientModule }    from '@angular/common/http';
   declarations: [
     AppComponent,
     MensajesComponent,
-    RouterOutletComponent,
     ListadoComponent,
     RegistroComponent,
-    MenuComponent
+    MenuComponent,
+    RegistroRestComponent
 
   ],
   imports: [

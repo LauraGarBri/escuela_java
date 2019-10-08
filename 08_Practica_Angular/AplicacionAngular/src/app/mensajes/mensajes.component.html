@@ -1,1 +1,12 @@
-<p>mensajes works!</p>
+<div *ngIf="mensajeSrv.mensajes.length">
+
+    <h2>MENSAJES: </h2>
+    <button (click)="mensajeSrv.clear()">LIMPIAR</button>
+    <div *ngFor='let mensaje of mensajeSrv.mensajes'>
+        {{mensaje}}
+    </div>
+</div>
+<div *ngIf="mensajeSrv.mensajes.length == 0">
+    <p>NO HAY MENSAJES</p>
+
+</div>

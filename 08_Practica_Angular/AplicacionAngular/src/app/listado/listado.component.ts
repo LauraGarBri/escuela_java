@@ -25,7 +25,7 @@ export class ListadoComponent implements OnInit {
   }
 
   getUsuariosFromService():void{
-    this.usuarios = this.usuarioSrv.getUsuario();
+    this.usuarios = this.usuarioSrv.getUsuarios();
   }
 
 }

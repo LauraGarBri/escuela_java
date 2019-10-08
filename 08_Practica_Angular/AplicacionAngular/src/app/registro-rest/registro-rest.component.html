@@ -1,0 +1,16 @@
+<h2>LIstado de heroes</h2>
+  <ul>
+    <li *ngFor = "let hero of heroesRecibidos"> {{hero.id}}-{{hero.name}}</li>
+  </ul>
+  <div>
+    <input [(ngModel)]="id" placeholder="ID:"/>
+    <input [(ngModel)]="email" placeholder="Email"/>
+    <input [(ngModel)]="password" placeholder="Password"/>
+    <input [(ngModel)]="name" placeholder="Name"/>
+    <input [(ngModel)]="age" placeholder="Age"/>
+
+  </div>
+  <div>
+    <input type="button" (click)="enviar()" value="ENVIAR"/>
+  </div>
+

@@ -2,12 +2,11 @@
 <!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
 <ul>
     <li *ngFor = "let usuario of usuarios"  (click) = "onSelect(usuario)">  
-        <span>{{usuario.id}}</span>
-        <span>{{usuario.email}}</span>
-        <span>{{usuario.password}}</span>
-        <span>{{usuario.name}}</span>
-        <span>{{usuario.age}}</span>
-        
+        <span>{{usuario.id}}</span><br/>
+        <span>{{usuario.email}}</span><br/>
+        <span>{{usuario.password}}</span><br/>
+        <span>{{usuario.name}}</span><br/>
+        <span>{{usuario.age}}</span><br/>
         <!--<a routerLink="/detail/{{hero.id}}">(+)</a>-->
     </li>
 </ul>
