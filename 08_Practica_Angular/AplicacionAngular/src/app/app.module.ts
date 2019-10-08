@@ -7,6 +7,9 @@ import { MensajesComponent } from './mensajes/mensajes.component';
 import { RouterOutletComponent } from './router-outlet/router-outlet.component';
 import { ListadoComponent } from './listado/listado.component';
 import { RegistroComponent } from './registro/registro.component';
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule }    from '@angular/common/http';
 
 
 
@@ -16,12 +19,15 @@ import { RegistroComponent } from './registro/registro.component';
     MensajesComponent,
     RouterOutletComponent,
     ListadoComponent,
-    RegistroComponent
+    RegistroComponent,
+    MenuComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
