@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Hero} from "../model/hero";
+import { Hero } from "../model/hero";
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -7,13 +10,20 @@ import {Hero} from "../model/hero";
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-//Esta propiedad viene de algun componente externo
-  @Input() hero : Hero; //Declaramos hero 
-  
+  //Esta propiedad viene de algun componente externo
+  @Input() hero: Hero; //Declaramos hero 
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute,
+    private heroSrv: HeroService,
+    private location: Location) { }
+
+  ngOnInit(): void {
+    this.getHero();
   }
-
+  getHero(): void {
+    // Cogemos el id del parámetro de la url   /detail/:id
+    const id = this.route.snapshot.paramMap.get('id');  
+    this.hero = this.heroSrv.getHero(parseInt(id));
+  }
 }

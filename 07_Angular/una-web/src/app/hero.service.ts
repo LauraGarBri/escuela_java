@@ -23,11 +23,10 @@ export class HeroService {
     this.arrayheroe.push(newhero);
   }
 
-  /*nuevoHeroe(): Hero {
-    return {
-      id: this.arrayheroe.length,
-      name: '',
-      
-    };
-  }*/
+  getHero(id: number):Hero {
+    
+   let hero = this.arrayheroe.find(hero => hero.id ===id);
+     return hero;
+    
+  }
 }

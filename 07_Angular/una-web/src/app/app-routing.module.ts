@@ -4,12 +4,14 @@ import {RouterModule, Routes} from "@angular/router";
 import {HerosListComponent}from "../app/heros-list/heros-list.component";
 import {NewHeroComponent} from "../app/new-hero/new-hero.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 
 //Listado de vinculaciones entre URL y component
 const routes: Routes = [
   {path:"heroes", component: HerosListComponent},
   {path: "nuevoHero", component: NewHeroComponent },
   {path: "dashboard", component: DashboardComponent },
+  { path: 'detail/:id', component: HeroDetailComponent },
   {path: '',redirectTo: '/dashboard', pathMatch:'full'}
 ];
 
