@@ -6,6 +6,8 @@ import { MenuComponent } from './menu/menu.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { RouterOutletComponent } from './router-outlet/router-outlet.component';
 import { ListadoComponent } from './listado/listado.component';
+import { RegistroComponent } from './registro/registro.component';
+
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { ListadoComponent } from './listado/listado.component';
     AppComponent,
     MensajesComponent,
     RouterOutletComponent,
-    ListadoComponent
+    ListadoComponent,
+    RegistroComponent
+
   ],
   imports: [
     BrowserModule,
