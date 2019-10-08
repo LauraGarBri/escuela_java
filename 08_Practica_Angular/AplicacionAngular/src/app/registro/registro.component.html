@@ -1,1 +1,12 @@
-<p>registro works!</p>
+<h1>REGISTRO</h1>
+<div>
+   
+    <input type="text" id="email" [(ngModel)] = "newUsuario.email" placeholder="Email" />
+    <input type="text" id="password" [(ngModel)] = "newUsuario.password" placeholder="Password" />
+    <input type="text" id="name" [(ngModel)] = "newUsuario.name" placeholder="Name" />
+    <input type="number" id="age" [(ngModel)] = "newUsuario.age" placeholder="Age" />
+</div>
+<div>
+    <input type="button" value="AÑADIR NUEVO USUARIO" 
+    (click)="createUser()"/>
+</div>

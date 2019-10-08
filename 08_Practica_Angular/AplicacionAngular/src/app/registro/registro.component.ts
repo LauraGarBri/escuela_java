@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../model/usuario';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  newUsuario: Usuario;
+  
+
+  constructor(private usuarioSrv: UsuarioService) { }
 
   ngOnInit() {
+    this.newUsuario = new Usuario();
   }
 
+  //Evento onclick
+  createHero(): void {
+    this.usuarioSrv.add(this.newUsuario);
+    // Crear uno nuevo para la siguiente vez
+    this.newUsuario = new Usuario();
+  }
 }
