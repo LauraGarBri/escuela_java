@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
   }
 
   //Evento onclick
-  createHero(): void {
+  createUser(): void {
     this.usuarioSrv.add(this.newUsuario);
     // Crear uno nuevo para la siguiente vez
     this.newUsuario = new Usuario();

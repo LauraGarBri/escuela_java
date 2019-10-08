@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../model/usuario';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-listado',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor() { }
+  usuarios: Usuario[];
+  selectedUsuario: Usuario;
+
+  constructor(private usuarioSrv: UsuarioService) { }
 
   ngOnInit() {
+   //this.heroes = HEROES;
+   this.getUsuariosFromService(); //Esto es lo mismo que el metodo de abajo 
+
+  }
+
+  onSelect(usuario: Usuario): void{
+    this.selectedUsuario = usuario;
+  }
+
+  getUsuariosFromService():void{
+    this.usuarios = this.usuarioSrv.getUsuario();
   }
 
 }

@@ -1,1 +1,13 @@
-<p>listado works!</p>
+<h2>Listado de usuarios</h2>
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+<ul>
+    <li *ngFor = "let usuario of usuarios"  (click) = "onSelect(usuario)">  
+        <span>{{usuario.id}}</span>
+        <span>{{usuario.email}}</span>
+        <span>{{usuario.password}}</span>
+        <span>{{usuario.name}}</span>
+        <span>{{usuario.age}}</span>
+        
+        <!--<a routerLink="/detail/{{hero.id}}">(+)</a>-->
+    </li>
+</ul>
