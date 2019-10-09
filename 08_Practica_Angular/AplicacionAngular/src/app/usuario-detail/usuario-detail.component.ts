@@ -12,33 +12,37 @@ import { RegistroRestService } from '../registro-rest.service';
 })
 export class UsuarioDetailComponent implements OnInit {
 
-   //Esta propiedad viene de algun componente externo
-   @Input() usuario: Usuario; //Declaramos hero 
+  @Input() usuario: Usuario;
 
+  constructor(private route: ActivatedRoute, 
+              private userSrv: UsuarioService) { }
 
-   constructor(private route: ActivatedRoute,
-     private usuarioSrv: UsuarioService,
-     private usuarioUp : RegistroRestService,
-     private location: Location) { }
- 
-   ngOnInit(): void {
-     this.getUsuario();
-   }
-   getUsuario(): void {
-     // Cogemos el id del parámetro de la url   /detail/:id
-     const id = this.route.snapshot.paramMap.get('id');  
-     this.usuario = this.usuarioSrv.getUsuario(parseInt(id));
-   }
-
-   save(): void {
-    this.usuarioUp.update(this.usuario)
-      .subscribe();
+  ngOnInit() {
+    this.changeUser();
   }
 
-
-  delete(usuario: Usuario): void {
-   // this.usuarioSrv = usuario.filter(h => h !== hero);
-    this.usuarioUp.delete(usuario).subscribe();
+  changeUser(): void {
+    // Cogemos el id del parámetro de la url   /detail/:id
+    const id = this.route.snapshot.paramMap.get('id');  
+    this.usuario = this.userSrv.getUsuario(parseInt(id));
   }
 
 }
+
+
+/*
+@Input() user: User;
+
+  constructor(private route: ActivatedRoute, 
+              private userSrv: UserService) { }
+
+  ngOnInit() {
+    this.changeUser();
+  }
+
+  changeUser(): void {
+    // Cogemos el id del parámetro de la url   /detail/:id
+    const id = this.route.snapshot.paramMap.get('id');  
+    this.user = this.userSrv.getUser(parseInt(id));
+  }
+}*/

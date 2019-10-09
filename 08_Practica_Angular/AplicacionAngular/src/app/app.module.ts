@@ -8,6 +8,7 @@ import { ListadoComponent } from './listado/listado.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule } from '@angular/forms';
 
+
 import { HttpClientModule }    from '@angular/common/http';
 import { RegistroRestComponent } from './registro-rest/registro-rest.component';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
@@ -31,6 +32,7 @@ import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.componen
     AppRoutingModule,
     HttpClientModule,
     FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,9 +3,17 @@
     <h2>{{usuario.name | uppercase}} details</h2>
     <div><span>Id: </span>{{usuario.id}}</div>
     <div>
-        <label>Nombre: </label>
+        <label>Email: </label>
+        <input [(ngModel)]="usuario.email" placeholder="Write your mail" />
+        <label>Password: </label>
+        <input [(ngModel)]="usuario.password" placeholder="Write your password" />
+        <label>Name: </label>
         <input [(ngModel)]="usuario.name" placeholder="Write your name" />
-        <button (click)="save()">save</button>
-        <button (click)="delete(usuario)">eliminar</button>
+        <label>Age: </label>
+        <input [(ngModel)]="usuario.age" placeholder="Write your age" />
+        <app-usuario-detail [usuario]="usuarioSelected"></app-usuario-detail>
+        <button (click)="save(usuarioSelected)">MODIFICAR</button>
+        <button (click)="delete(usuarioSelected)">ELIMINAR</button>
+
     </div>
 </div>

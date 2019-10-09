@@ -15,15 +15,25 @@ export class RegistroRestService {
     headers: new HttpHeaders({'Content-Type':"application/json"})
   };
 
-  constructor(private httpCli: HttpClient) {
 
+  userList: Usuario[];
+  constructor(private httpCli: HttpClient) {
+    this.getUsersList();
   }
+
+
 
   getUsuarios(): Observable<Usuario[]> {
-    //Aqui no definimos las callback,mejor que las defina donde se necesitan.Devolvemos el 
-    //observable para que se pueda gestionar desde fuera del servicio
-    return this.httpCli.get<Usuario[]>(this.urlApiRest);
+    let observResp = this.httpCli.get<Usuario[]>(this.urlApiRest);
+    return observResp;
   }
+  // metodo añadir el nuevo user
+
+  getUsersList(): Usuario[] {
+    return this.userList;
+  }
+
+  
 
   //metodo añadir el nuevo usuario
   add(newUsuario: Usuario):Observable<Usuario> {

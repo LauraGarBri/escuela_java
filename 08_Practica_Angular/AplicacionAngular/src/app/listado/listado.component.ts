@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../usuario.service';
+import { RegistroRestService } from '../registro-rest.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-listado',
@@ -9,23 +11,31 @@ import { UsuarioService } from '../usuario.service';
 })
 export class ListadoComponent implements OnInit {
 
-  usuarios: Usuario[];
-  selectedUsuario: Usuario;
-
-  constructor(private usuarioSrv: UsuarioService) { }
+  @Input() usuario: Usuario;
+  personasRecibidas: Usuario[];
+  listaPersona: Usuario[];
+  constructor(private usuariorv: RegistroRestService) { }
 
   ngOnInit() {
-   //this.heroes = HEROES;
-   this.getUsuariosFromService(); //Esto es lo mismo que el metodo de abajo 
-
+    let obsevArrayPersonas: Observable<Usuario[]>
+    this.personasRecibidas = [];
+    this.usuariorv.getUsuarios().subscribe(personasRec => {
+      this.personasRecibidas = personasRec
+    });
+    this.getUsuariosFromService();
   }
 
-  onSelect(usuario: Usuario): void{
-    this.selectedUsuario = usuario;
+  getUsuariosFromService(): void {
+    this.listaPersona = this.usuariorv.getUsersList();
+  }
+  save(newUsuario: Usuario): void {
+    this.usuariorv.update(newUsuario).subscribe();
   }
 
-  getUsuariosFromService():void{
-    this.usuarios = this.usuarioSrv.getUsuarios();
+  delete(newUsuario: Usuario): void {
+    this.usuariorv.delete(newUsuario).subscribe();
   }
 
 }
+
+
