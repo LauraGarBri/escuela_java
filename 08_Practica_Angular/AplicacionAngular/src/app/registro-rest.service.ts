@@ -25,14 +25,20 @@ export class RegistroRestService {
     return this.httpCli.get<Usuario[]>(this.urlApiRest);
   }
 
-  //metodo añadir el nuevo heroe
+  //metodo añadir el nuevo usuario
   add(newUsuario: Usuario):Observable<Usuario> {
     return this.httpCli.post<Usuario>(this.urlApiRest,newUsuario,this.httpOptions);
   }
 
-  //metodo para modificar heroe
+  //metodo para modificar usuario
   update(usuario: Usuario):Observable<Usuario> {
     return this.httpCli.put<Usuario>(this.urlApiRest,usuario,this.httpOptions);
+  }
+
+  //metodo para eliminar usuario
+  delete(usuario : Usuario): Observable<Usuario> {
+    this.httpOptions['body'] = usuario;
+    return this.httpCli.delete<Usuario>(this.urlApiRest,this.httpOptions)
   }
 
   

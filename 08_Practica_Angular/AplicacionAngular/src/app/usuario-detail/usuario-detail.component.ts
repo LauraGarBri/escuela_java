@@ -35,4 +35,10 @@ export class UsuarioDetailComponent implements OnInit {
       .subscribe();
   }
 
+
+  delete(usuario: Usuario): void {
+   // this.usuarioSrv = usuario.filter(h => h !== hero);
+    this.usuarioUp.delete(usuario).subscribe();
+  }
+
 }
