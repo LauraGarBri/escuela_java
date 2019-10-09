@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../usuario.service';
 import { Location } from '@angular/common';
+import { RegistroRestService } from '../registro-rest.service';
 
 @Component({
   selector: 'app-usuario-detail',
@@ -17,6 +18,7 @@ export class UsuarioDetailComponent implements OnInit {
 
    constructor(private route: ActivatedRoute,
      private usuarioSrv: UsuarioService,
+     private usuarioUp : RegistroRestService,
      private location: Location) { }
  
    ngOnInit(): void {
@@ -27,5 +29,10 @@ export class UsuarioDetailComponent implements OnInit {
      const id = this.route.snapshot.paramMap.get('id');  
      this.usuario = this.usuarioSrv.getUsuario(parseInt(id));
    }
+
+   save(): void {
+    this.usuarioUp.update(this.usuario)
+      .subscribe();
+  }
 
 }

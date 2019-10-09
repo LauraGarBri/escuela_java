@@ -1,16 +1,17 @@
 <h2>LIstado de Usuarios registro rest</h2>
 <app-usuario-detail [usuario]="userSelected"></app-usuario-detail>
-  <ul>
-    <li *ngFor = "let usuario of usuariosRecibidos"> {{usuario.id}}-{{usuario.name}}-
-      <input type="button" (click)="userSelected = usuario" value="MODIFICAR"/></li>
-  </ul>
-  <div>
-    <input [(ngModel)]="email" placeholder="Email"/>
-    <input [(ngModel)]="password" placeholder="Password"/>
-    <input [(ngModel)]="name" placeholder="Name"/>
-    <input [(ngModel)]="age" placeholder="Age"/>
+<ul>
+  <li *ngFor="let usuario of usuariosRecibidos"> {{usuario.id}}-{{usuario.name}}-
+    <input type="button" (click)="userSelected = usuario" value="MODIFICAR" />
+    <input type="button" (click)="userSelectedDelete = usuario" value="ELIMINAR" /></li>
+</ul>
+<div>
+  <input [(ngModel)]="email" placeholder="Email" />
+  <input [(ngModel)]="password" placeholder="Password" />
+  <input [(ngModel)]="name" placeholder="Name" />
+  <input [(ngModel)]="age" placeholder="Age" />
 
-  </div>
-  <div>
-    <input type="button" (click)="enviar()" value="ENVIAR"/>
-  </div>
+</div>
+<div>
+  <input type="button" (click)="enviar()" value="ENVIAR" />
+</div>
