@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule }    from '@angular/common/http';
 import { RegistroRestComponent } from './registro-rest/registro-rest.component';
+import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 
 
 
@@ -20,7 +21,8 @@ import { RegistroRestComponent } from './registro-rest/registro-rest.component';
     ListadoComponent,
     RegistroComponent,
     MenuComponent,
-    RegistroRestComponent
+    RegistroRestComponent,
+    UsuarioDetailComponent
 
   ],
   imports: [

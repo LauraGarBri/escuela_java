@@ -1,6 +1,8 @@
-<h2>LIstado de Usuarios</h2>
+<h2>LIstado de Usuarios registro rest</h2>
+<app-usuario-detail [usuario]="userSelected"></app-usuario-detail>
   <ul>
-    <li *ngFor = "let usuario of usuariosRecibidos"> {{usuario.id}}-{{usuario.name}}-</li>
+    <li *ngFor = "let usuario of usuariosRecibidos"> {{usuario.id}}-{{usuario.name}}-
+      <input type="button" (click)="userSelected = usuario" value="MODIFICAR"/></li>
   </ul>
   <div>
     <input [(ngModel)]="email" placeholder="Email"/>

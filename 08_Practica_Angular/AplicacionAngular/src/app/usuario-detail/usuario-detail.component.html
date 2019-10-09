@@ -1,0 +1,9 @@
+<div *ngIf="usuario">
+    <!---solo se crea si hero tiene algún valor -->
+    <h2>{{usuario.name | uppercase}} details</h2>
+    <div><span>Id: </span>{{usuario.id}}</div>
+    <div>
+        <label>Nombre: </label>
+        <input [(ngModel)]="usuario.name" placeholder="Write your name" />
+    </div>
+</div>
