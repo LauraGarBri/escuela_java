@@ -70,7 +70,9 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Formacion\Desktop\ESCUELA_JAVA\repo_laura_clonado\escuela_java\09_Spring\08_Spring\springdata_rest_users"/>
 			<item value="C:\Users\Formacion\Desktop\ESCUELA_JAVA\repo_laura_clonado\escuela_java\10_Spring\com.sinensia.springrestusers"/>
+			<item value="C:\Users\Formacion\Desktop\ESCUELA_JAVA\repo_german\escuela_java\08_Spring\spring_restusers"/>
 			<item value="C:\Users\Formacion\Desktop\ESCUELA_JAVA\repo_laura_clonado\escuela_java\09_Spring\demo_spring_users"/>
 			<item value="C:\Users\Formacion\Desktop\ESCUELA_JAVA\Repo_german_escuela_java.git\08_Spring\demo_spring_users"/>
 		</list>
